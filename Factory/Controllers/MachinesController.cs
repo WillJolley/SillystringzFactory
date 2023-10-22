@@ -38,6 +38,10 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine mech)
     {
+      if (!ModelState.IsValid)
+      {
+        return RedirectToAction("Create");
+      }
       _db.Machines.Add(mech);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -52,6 +56,10 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Edit(Machine machine)
     {
+      if (!ModelState.IsValid)
+      {
+        return RedirectToAction("Edit");
+      }
       _db.Machines.Update(machine);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -76,14 +84,16 @@ namespace Factory.Controllers
     {
       Machine thisMech = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
 
-      if (!ModelState.IsValid)
+      List<Engineer> engineers = _db.Engineers.ToList();
+
+      if (engineers.Count == 0)
       {
-        ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
-        return View(thisMech);
+        return RedirectToAction("Details", new { id = thisMech.MachineId });
       }
       else
       {
-        return RedirectToAction("Details", new { id = thisMech.MachineId });
+        ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+        return View(thisMech);
       }
     }
 

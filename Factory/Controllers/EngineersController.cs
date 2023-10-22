@@ -38,6 +38,7 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Engineer enge)
     {
+
       _db.Engineers.Add(enge);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -52,6 +53,10 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Edit(Engineer enge)
     {
+      if (!ModelState.IsValid)
+      {
+        return RedirectToAction("Edit");
+      }
       _db.Engineers.Update(enge);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -76,7 +81,9 @@ namespace Factory.Controllers
     {
       Engineer enge = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
 
-      if (!ModelState.IsValid)
+      List<Machine> machines = _db.Machines.ToList();
+
+      if (machines.Count == 0)
       {
         return RedirectToAction("Details", new { id = enge.EngineerId });
       }
