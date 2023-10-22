@@ -5,8 +5,10 @@
 
 <h4>Add a new machine to the index</h4>
 
+<p><strong>NOTE: </strong>Machine's name field cannot be left empty.</p>
+
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
-<p>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 
 @using (Html.BeginForm())
 {

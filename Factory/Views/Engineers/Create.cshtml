@@ -6,12 +6,17 @@
 
 <h4>Add a new engineer to the index</h4>
 
-<p>@Html.ValidationMessageFor(model.Name, "", new { @class = "text-danger", @style = "font-weight: 600" })</p>
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600" })</p>
+
+<p><strong>NOTE: </strong>Engineer's name field cannot be left empty.</p>
 
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Specialty)
+  @Html.TextBoxFor(model => model.Specialty)
 
   <input type="submit" value="Add new engineer" class="btn btn-primary" />
 }

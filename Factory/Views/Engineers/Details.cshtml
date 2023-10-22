@@ -20,7 +20,7 @@ else
   <ul>
     @foreach(EngineerMachine join in Model.JoinEntities)
     {
-      <li>Machine: @join.Machine.Name</li>
+      <li>Machine: @Html.ActionLink($"{join.Machine.Name}", "Details", "Machines", new { id = join.Machine.MachineId })</li>
       @using (Html.BeginForm("DeleteJoin", "Engineers"))
       {
         @Html.Hidden("joinId", @join.EngineerMachineId)
@@ -30,5 +30,8 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Engineers index", "Index")</p>
 <p>@Html.ActionLink("Add a machine to this engineer", "AddMachine", new { id = Model.EngineerId })</p>
+<p><strong>NOTE:</strong> You need to have at least one machine added to the index first!</p>
+<p>@Html.ActionLink("Engineers index", "Index")</p>
+<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>

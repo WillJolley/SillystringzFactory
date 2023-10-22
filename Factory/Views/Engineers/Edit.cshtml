@@ -6,6 +6,10 @@
 
 <h4>Edit this engineer: @Html.DisplayFor(model => model.Name)</h4>
 
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600" })</p>
+
+<p><strong>NOTE: </strong>Engineer's name field cannot be left empty.</p>
+
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.EngineerId)
