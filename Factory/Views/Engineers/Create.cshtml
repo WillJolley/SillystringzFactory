@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Add a new engineer to the index</h4>
+
+<p>@Html.ValidationMessageFor(model.Name, "", new { @class = "text-danger", @style = "font-weight: 600" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  <input type="submit" value="Add new engineer" class="btn btn-primary" />
+}
+
+<p>@Html.ActionLink("Engineers index", "Index")</p>
