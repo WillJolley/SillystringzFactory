@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Factory.Models
 {
   public class EngineerMachine
