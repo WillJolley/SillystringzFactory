@@ -7,8 +7,10 @@
 ## Technologies Used
 
 * C#
-* ASP.NET core MVC
+* EF Core
+* asp.NET MVC
 * Razor Pages
+* CSS
 
 
 ## Description
@@ -34,6 +36,8 @@ Dr. Sillystringz's Factory is a web app for a factory that allows the user to cr
 6. Navigate to the project directory: `$ cd Factory`
 7. Run `$ dotnet watch run` in the command line to start the project in development mode with a watcher.
 8. Open the browser at: _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate).
+
+## Known Bugs
 
 ## License
 
